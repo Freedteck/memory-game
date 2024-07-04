@@ -9,7 +9,7 @@ const Cards = ({ updateScore, handleBestScore }) => {
 
   useEffect(() => {
     const getAmiibos = async () => {
-      await fetch(url, { mode: "cors" })
+      await fetch(url)
         .then((response) => response.json())
         .then((data) => {
           const amiibo = data.amiibo.slice(1, 13);
