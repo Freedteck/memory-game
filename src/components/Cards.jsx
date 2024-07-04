@@ -3,13 +3,13 @@ import Card from "./Card";
 import "../styles/cards.css";
 
 const Cards = ({ updateScore, handleBestScore }) => {
-  const url = `https://amiiboapi.com/api/amiibo`;
+  const url = `http://www.amiiboapi.com/api/amiibo`;
   const [amiibos, setAmiibos] = useState([]);
   let isMounted = true;
 
   useEffect(() => {
     const getAmiibos = async () => {
-      await fetch(url)
+      await fetch(url, { mode: "cors" })
         .then((response) => response.json())
         .then((data) => {
           const amiibo = data.amiibo.slice(1, 13);
