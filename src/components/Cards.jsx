@@ -5,13 +5,15 @@ import "../styles/cards.css";
 const Cards = ({ updateScore, handleBestScore }) => {
   const url = `https://www.amiiboapi.com/api/amiibo`;
   const [amiibos, setAmiibos] = useState([]);
-  let isMounted = true;
+  let isMounted = false;
 
   useEffect(() => {
     const getAmiibos = async () => {
+      console.log("Fetching from URL:", url); // Log the URL being fetched
       await fetch(url, { mode: "cors" })
         .then((response) => response.json())
         .then((data) => {
+          console.log("Data fetched:", data); // Log fetched data
           const amiibo = data.amiibo.slice(1, 13);
           setAmiibos(amiibo);
         })
@@ -25,7 +27,7 @@ const Cards = ({ updateScore, handleBestScore }) => {
     }
 
     return () => {
-      isMounted = false;
+      isMounted = true;
     };
   }, []);
 
@@ -49,7 +51,7 @@ const Cards = ({ updateScore, handleBestScore }) => {
     <div className="cards">
       {amiibos.map((amiibo) => (
         <Card
-          key={amiibo.head}
+          key={`${amiibo.head}-${amiibo.tail}`} // Ensure unique keys
           image={amiibo.image}
           name={amiibo.character}
           shuffleCards={() => shuffleCards(amiibo.character)}
