@@ -1,0 +1,22 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  gap: 20px;
+}
+button {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+button .img {
+  border-radius: 20px;
+  overflow: hidden;
+  max-height: 350px;
+}
+.img img {
+  width: 100%;
+}
+button p {
+  text-transform: capitalize;
+}
