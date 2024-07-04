@@ -3,7 +3,7 @@ import Card from "./Card";
 import "../styles/cards.css";
 
 const Cards = ({ updateScore, handleBestScore }) => {
-  const url = `http://www.amiiboapi.com/api/amiibo`;
+  const url = `https://www.amiiboapi.com/api/amiibo`;
   const [amiibos, setAmiibos] = useState([]);
   let isMounted = true;
 
